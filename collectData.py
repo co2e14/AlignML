@@ -23,7 +23,7 @@ def getReadbacks(xZ, yZ, zZ):
     if phi == -0.0:
         phi = 0.0
 
-    vals = [x, y, z, kappa, phi]
+    vals = x, y, z, kappa, phi
 
     return vals
 
@@ -37,11 +37,10 @@ if __name__ == "__main__":
         sys.exit("To start, centre the pin at kappa/phi 0/0 then restart the script")
     xZ, yZ, zZ = getZero()
     while True:
-        RBVS = getReadbacks(xZ, yZ, zZ)
-        print(RBVS)
+        x, y, z, kappa, phi = getReadbacks(xZ, yZ, zZ)
+        print(x, y, z, kappa, phi)
         with open(f'readings/rbvs_{now.strftime("%d%m%Y")}.txt', 'a') as f:
-            f.write(str(RBVS))
-            f.write('\n')
+            f.write(f'{x}, {y}, {z}, {kappa}, {phi}\n')
         next = input("Press Enter when centered to record new position, or press Q to finish: ").upper()
         if next == "Q":
             sys.exit(0)
