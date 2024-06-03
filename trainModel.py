@@ -18,7 +18,7 @@ def train(trainingSet):
 
     Y_pred = model.predict(X_test)
     mse = mean_squared_error(Y_test, Y_pred)
-    print(mse)
+    print(f"MSE: {mse}")
     filename, _ = os.path.splitext(trainingSet)
 
     with open(f"./models/model_{filename}.pkl", "wb") as toDump:
