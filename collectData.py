@@ -2,6 +2,7 @@ import numpy as np
 from cothread.catools import *
 from datetime import datetime
 import sys
+import os
 
 now = datetime.now()
 
@@ -27,6 +28,8 @@ def getReadbacks(xZ, yZ, zZ):
     return vals
 
 if __name__ == "__main__":
+    if not os.path.exists("./readings"):
+        os.mkdir("./readings")
     start = input("Is the pin centered at kappa/phi 0/0? (y/n)").upper()
     if start == "Y":
         pass
@@ -36,7 +39,7 @@ if __name__ == "__main__":
     while True:
         RBVS = getReadbacks(xZ, yZ, zZ)
         print(RBVS)
-        with open(f'rbvs_{now.strftime("%d%m%Y")}.txt', 'a') as f:
+        with open(f'readings/rbvs_{now.strftime("%d%m%Y")}.txt', 'a') as f:
             f.write(str(RBVS))
             f.write('\n')
         next = input("Press Enter when centered to record new position, or press Q to finish: ").upper()
