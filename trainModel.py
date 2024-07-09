@@ -32,6 +32,7 @@ if __name__ == "__main__":
         os.mkdir("./models")
     trainingSet = "rbvs_20062024.txt"
     #trainingSet = input("Enter trainind dataset filename: ")
-    while True:
-        train(trainingSet)
-        time.sleep(30)
+#    while True:
+    train(trainingSet)
+ #       continue
+  #      time.sleep(30)
